@@ -69,25 +69,15 @@ export default function App() {
           <nav>
             <img src={Logo} alt="Logo" />
             <div className="header-links">
-              <Link to="/">Home</Link>
               <Link to="/shop">Shop</Link>
-              <Link to="/cart">Cart</Link>
             </div>
-            <div class="header-cart-link">
+            <Link to="/cart" class="header-cart-link">
               <img src={CartIcon} alt="Cart Icon" />
               {cartSize && `(${cartSize})`}
-            </div>
+            </Link>
           </nav>
           <div className="page">
             <Switch>
-              <Route path="/shop">
-                <Shop 
-                  key={shopClientTimestamp}
-                  shopClient={shopClient}
-                  checkoutID={checkoutID}
-                  updateShopClient={updateShopClient}
-                />
-              </Route>
               <Route path="/cart">
                 <Cart 
                   key={shopClientTimestamp}
@@ -97,8 +87,16 @@ export default function App() {
                   updateShopClient={updateShopClient}
                 />
               </Route>
-              <Route path="/">
+              <Route path="/home">
                 <Home />
+              </Route>
+              <Route path="/">
+                <Shop 
+                  key={shopClientTimestamp}
+                  shopClient={shopClient}
+                  checkoutID={checkoutID}
+                  updateShopClient={updateShopClient}
+                />
               </Route>
             </Switch>
           </div>
