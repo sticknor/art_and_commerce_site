@@ -1,38 +1,123 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: body;
+  src: url(./font/AUTHENTICSans-90.otf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: body;
+  --text-primary: #FF5C00;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  padding-top: 124px;
+}
+
+/* Nav */
+nav { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  padding: 0px 24px;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
   align-items: center;
+  z-index: 10;
+}
+.header-links, .header-cart-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-primary) !important;
+  cursor: pointer;
+}
+.header-links > a {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding-bottom: 4px;
+}
+.header-links.selected, .header-links > a:hover {
+  border-bottom: 1px solid var(--text-primary);
+}
+.header-links > *:not(:last-child) {
+  margin-right: 16px;
+}
+.header-cart-link > *:not(:last-child) {
+  margin-right: 4px;
+}
+
+/* Card */
+.card-container {
+  color: var(--text-primary);
+  position: relative;
+  width: 100%;
+  height: 0px;
+  padding-top: 157%;
+  overflow: hidden;
+  margin: 12px;
+}
+.card-image-underlay,
+.card-graphic-overlay,
+.card-text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  object-position: center;
+}
+.card-title {
+  position: absolute;
+  top: 2.2%;
+  left: 2%;
+  width: 57%;
+  text-align: center;
+}
+.card-price {
+  position: absolute;
+  top: 83%;
+  width: 15%;
+  left: 2%;
+  text-align: center;
+}
+.card-image-underlay {
+  top: 6%;
+  height: 83%;
+  object-fit: cover;
+}
+.card-graphic-overlay {
+  background-size: contain;
+}
+
+/* Products */
+.products-grid {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  flex-direction: row;
+  flex-wrap: wrap;
 }

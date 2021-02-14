@@ -1,23 +1,30 @@
+// React
 import React, { useState, useEffect } from "react";
-import Client from 'shopify-buy';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+// Shopify
+import Client from "shopify-buy";
 
 // Screens
-import Shop from './screens/Shop';
-import Cart from './screens/Cart';
+import Shop from "./components/Shop";
+import Cart from "./components/Cart";
+
+// Assets 
+import Background from "./assets/background_default.png";
+import Logo from "./assets/keith_logo.svg";
+import CartIcon from "./assets/shopping_bag_icon.svg";
+
+// Style 
+import "./App.css"
 
 export default function App() {
 
   // Site-Wide State
   const [shopClientTimestamp, setShopClientTimestamp] = useState(Date.now());
   const [shopClient, setShopClient] = useState(undefined);
-  const [checkoutID, setCheckoutID] = useState(localStorage.getItem('checkoutID'));
-  const [checkoutURL, setCheckoutURL] = useState(localStorage.getItem('checkoutURL'));
+  const [checkoutID, setCheckoutID] = useState(localStorage.getItem("checkoutID"));
+  const [checkoutURL, setCheckoutURL] = useState(localStorage.getItem("checkoutURL"));
+  const [cartSize, setCartSize] = useState(undefined);
 
   useEffect(() => {
     const shopClient = Client.buildClient({
@@ -33,8 +40,19 @@ export default function App() {
         setCheckoutURL(checkout.webUrl);
         updateShopClient();
         // Persist the cart
-        localStorage.setItem('checkoutID', checkout.id);
-        localStorage.setItem('checkoutURL', checkout.webUrl);
+        localStorage.setItem("checkoutID", checkout.id);
+        localStorage.setItem("checkoutURL", checkout.webUrl);
+      });
+    }
+
+    // Get size of cart
+    if (checkoutID) {
+      shopClient?.checkout.fetch(checkoutID).then((_checkout) => { 
+        var _cartSize = 0;
+        _checkout.lineItems.map((lineItem) => {
+          _cartSize += lineItem.quantity;
+        });
+        setCartSize(_cartSize);
       });
     }
   
@@ -47,44 +65,43 @@ export default function App() {
   return (
       <Router>
         <div>
+          <div style={{ backgroundImage: `url(${Background}` }} className="background" />
           <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/shop">Shop</Link>
-              </li>
-              <li>
-                <Link to="/cart">Cart</Link>
-              </li>
-            </ul>
+            <img src={Logo} alt="Logo" />
+            <div className="header-links">
+              <Link to="/">Home</Link>
+              <Link to="/shop">Shop</Link>
+              <Link to="/cart">Cart</Link>
+            </div>
+            <div class="header-cart-link">
+              <img src={CartIcon} alt="Cart Icon" />
+              {cartSize && `(${cartSize})`}
+            </div>
           </nav>
-
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
-          <Switch>
-            <Route path="/shop">
-              <Shop 
-                key={shopClientTimestamp}
-                shopClient={shopClient}
-                checkoutID={checkoutID}
-                updateShopClient={updateShopClient}
-              />
-            </Route>
-            <Route path="/cart">
-              <Cart 
-                key={shopClientTimestamp}
-                shopClient={shopClient}
-                checkoutID={checkoutID}
-                checkoutURL={checkoutURL}
-                updateShopClient={updateShopClient}
-              />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+          <div className="page">
+            <Switch>
+              <Route path="/shop">
+                <Shop 
+                  key={shopClientTimestamp}
+                  shopClient={shopClient}
+                  checkoutID={checkoutID}
+                  updateShopClient={updateShopClient}
+                />
+              </Route>
+              <Route path="/cart">
+                <Cart 
+                  key={shopClientTimestamp}
+                  shopClient={shopClient}
+                  checkoutID={checkoutID}
+                  checkoutURL={checkoutURL}
+                  updateShopClient={updateShopClient}
+                />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </div>
         </div>
       </Router>
   );
