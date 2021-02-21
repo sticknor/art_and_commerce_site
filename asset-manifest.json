@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/art_and_commerce_site/static/css/main.2ae56aaf.chunk.css",
+    "main.css": "/art_and_commerce_site/static/css/main.ef11890c.chunk.css",
     "main.js": "/art_and_commerce_site/static/js/main.f604830f.chunk.js",
     "main.js.map": "/art_and_commerce_site/static/js/main.f604830f.chunk.js.map",
     "runtime-main.js": "/art_and_commerce_site/static/js/runtime-main.c9de8485.js",
@@ -10,7 +10,7 @@
     "static/js/3.96967a1b.chunk.js": "/art_and_commerce_site/static/js/3.96967a1b.chunk.js",
     "static/js/3.96967a1b.chunk.js.map": "/art_and_commerce_site/static/js/3.96967a1b.chunk.js.map",
     "index.html": "/art_and_commerce_site/index.html",
-    "static/css/main.2ae56aaf.chunk.css.map": "/art_and_commerce_site/static/css/main.2ae56aaf.chunk.css.map",
+    "static/css/main.ef11890c.chunk.css.map": "/art_and_commerce_site/static/css/main.ef11890c.chunk.css.map",
     "static/js/2.130ae108.chunk.js.LICENSE.txt": "/art_and_commerce_site/static/js/2.130ae108.chunk.js.LICENSE.txt",
     "static/media/App.css": "/art_and_commerce_site/static/media/AUTHENTICSans-90.908da577.otf",
     "static/media/background_default.b7317ace.png": "/art_and_commerce_site/static/media/background_default.b7317ace.png",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.c9de8485.js",
     "static/js/2.130ae108.chunk.js",
-    "static/css/main.2ae56aaf.chunk.css",
+    "static/css/main.ef11890c.chunk.css",
     "static/js/main.f604830f.chunk.js"
   ]
 }
