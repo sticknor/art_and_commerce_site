@@ -48,6 +48,7 @@ export default function App() {
     // Get size of cart
     if (checkoutID) {
       shopClient?.checkout.fetch(checkoutID).then((_checkout) => { 
+        if (_checkout === null) return;
         var _cartSize = 0;
         _checkout.lineItems.map((lineItem) => {
           _cartSize += lineItem.quantity;

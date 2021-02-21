@@ -17,7 +17,10 @@ export default function Shop(props) {
 
   useEffect(() => {
     // Fetch all products in your shop
-    shopClient?.product.fetchAll().then((_products) => { setProducts(_products); });
+    shopClient?.product.fetchAll().then((_products) => {
+      console.log(_products);
+      setProducts(_products); 
+    });
   }, []);
 
   // const addToCart = (productID) => {
@@ -36,20 +39,6 @@ export default function Shop(props) {
       {products.map((product, index) => {
         return (
           <React.Fragment>
-            <Card
-              key={index}
-              title={product.title}
-              images={product.images}
-              price={product.variants[0].price}
-              sold={false}
-            />
-            <Card
-              key={index}
-              title={product.title}
-              images={product.images}
-              price={product.variants[0].price}
-              sold={false}
-            />
             <Card
               key={index}
               title={product.title}

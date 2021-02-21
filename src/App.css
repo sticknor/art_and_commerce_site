@@ -113,6 +113,27 @@ nav {
 .card-graphic-overlay {
   background-size: contain;
 }
+.prev-button {
+  position: absolute;
+  top: 25%;
+  left: 2%;
+  height: 50%;
+  width: 10%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  -moz-user-select: none;
+}
+.next-button {
+  position: absolute;
+  top: 25%;
+  right: 2%;
+  height: 50%;
+  width: 10%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
 
 /* Products */
 .products-grid {
