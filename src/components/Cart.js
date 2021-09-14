@@ -6,7 +6,8 @@ export default function Cart(props) {
     shopClient,
     checkoutID,
     checkoutURL,
-    updateShopClient
+    updateShopClient,
+    closeBag
   } = props;
 
   const [cartProducts, setCartProducts] = useState([]);
@@ -29,8 +30,11 @@ export default function Cart(props) {
   }
 
   return (
-    <React.Fragment>
-      <h2>Cart:</h2>
+    <div style={{ display: 'flex', width: '100%' , flexDirection: 'column'}}>
+      <div style={{ display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <div>bag</div>
+        <div onClick={closeBag}>close</div>
+      </div>
       <div>
         {cartProducts.map((lineItem, index) => {
             return (
@@ -52,9 +56,10 @@ export default function Cart(props) {
       <a 
         href={checkoutURL}
         target={'_blank'}
+        className={'checkoutButton'}
       >
         CHECKOUT
       </a>
-    </React.Fragment>
+      </div>
   );
 }

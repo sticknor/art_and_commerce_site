@@ -34,6 +34,10 @@ export default function Shop(props) {
   //   })
   // }
 
+  function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
   return (
     <div className="products-grid">
       {products.map((product, index) => {
@@ -45,6 +49,7 @@ export default function Shop(props) {
               images={product.images}
               price={product.variants[0].price}
               sold={false}
+              rotation={getRandomArbitrary(-0.8, 0.8)}
             />
           </React.Fragment>
           // { /* Buy now button */ }

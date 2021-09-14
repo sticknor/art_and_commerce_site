@@ -1,10 +1,6 @@
-@font-face {
-  font-family: body;
-  src: url(./font/AUTHENTICSans-90.otf);
-}
-
 body {
-  font-family: body;
+  font-family: 'Inconsolata', monospace;
+  --text-black: #000000;
   --text-primary: #FF5C00;
 }
 
@@ -25,7 +21,7 @@ body {
   bottom: 0px;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: scroll;
   padding-top: 124px;
 }
 
@@ -49,16 +45,17 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: var(--text-primary) !important;
+  color: var(--text-black);
   cursor: pointer;
+  text-decoration: none;
 }
 .header-links > a {
-  color: var(--text-primary);
+  color: var(--text-black);
   text-decoration: none;
   padding-bottom: 4px;
 }
 .header-links.selected, .header-links > a:hover {
-  border-bottom: 1px solid var(--text-primary);
+  border-bottom: 1px solid var(--text-black);
 }
 .header-links > *:not(:last-child) {
   margin-right: 16px;
@@ -69,17 +66,19 @@ nav {
 
 /* Card */
 .card-container {
-  color: var(--text-primary);
+  color: var(--text-black);
   position: relative;
+  transition: all 0.5s;
   width: 100%;
   height: 0px;
-  padding-top: 157%;
+  padding-top: 140%;
   overflow: hidden;
   margin: 12px;
 }
 .card-image-underlay,
 .card-graphic-overlay,
 .card-text-overlay {
+  transition: all 0.5s;
   position: absolute;
   top: 0;
   left: 0;
@@ -93,16 +92,17 @@ nav {
 }
 .card-title {
   position: absolute;
-  top: 2.2%;
+  top: 8.5%;
   left: 2%;
-  width: 57%;
+  width: 90%;
   text-align: center;
+  display: block;
 }
 .card-price {
   position: absolute;
   top: 83%;
-  width: 15%;
-  left: 2%;
+  width: 20%;
+  right: 20%;
   text-align: center;
 }
 .card-image-underlay {
@@ -138,7 +138,84 @@ nav {
 /* Products */
 .products-grid {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+/* Footer */
+footer {
+  display: flex;
+  flex-direction: row;
+  min-height: 100px;
+  padding: 30px;
+  border-top: 1px solid #828282;
+}
+
+footer > div {
+  margin-right: 50px;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: rgb(122,188,239);
+  background: linear-gradient(90deg, rgba(122,188,239,1) 0%, rgba(122,188,239,1) 48%, rgba(122,188,239,0) 77%);
+  transition: all 0.5s;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.menu-open {
+  width: 300px;
+}
+
+.menu-closed {
+  width: 0px;
+}
+
+.checkoutButton {
+  width: 100%;
+  display: inline-block;
+  background-color: #c4c4c47c;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 0px;
+  margin-top: 50px;
+  color: black;
+}
+
+.bag {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFFAC8;
+  transition: width 0.5s;
+  z-index: 10000;
+  overflow: hidden;
+  
+}
+
+.bag-open {
+  width: 35%;
+  padding: 50px;
+}
+
+.bag * {
+  display: none;
+}
+
+.bag-open * {
+  display: initial;
+}
+
+.bag-closed {
+  width: 0px;
+}
+
+

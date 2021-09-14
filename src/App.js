@@ -11,6 +11,7 @@ import Cart from "./components/Cart";
 
 // Assets 
 import Background from "./assets/background_default.png";
+import Shell from "./assets/shell.png";
 import Logo from "./assets/keith_logo.svg";
 import CartIcon from "./assets/shopping_bag_icon.svg";
 
@@ -25,6 +26,10 @@ export default function App() {
   const [checkoutID, setCheckoutID] = useState(localStorage.getItem("checkoutID"));
   const [checkoutURL, setCheckoutURL] = useState(localStorage.getItem("checkoutURL"));
   const [cartSize, setCartSize] = useState(undefined);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isBagOpen, setIsBagOpen] = useState(false);
+
 
   useEffect(() => {
     const shopClient = Client.buildClient({
@@ -66,28 +71,34 @@ export default function App() {
   return (
       <Router>
         <div>
-          <div style={{ backgroundImage: `url(${Background}` }} className="background" />
+          <div 
+            // style={{ backgroundImage: `url(${Background}` }}
+            className="background" />
           <nav>
-            <img src={Logo} alt="Logo" />
-            <div className="header-links">
-              <Link to="/shop">Shop</Link>
+            <div 
+              className="header-links" 
+              style={{position: 'relative', width: '115px'}} 
+              onClick={() => {
+                setIsBagOpen(false);
+                setIsMenuOpen(!isMenuOpen)
+              }}>
+              <img src={Shell} alt="Logo" />
+              <div style={{position: 'absolute', top: '23px', left: '23px', transform: 'rotate(-20deg)'}}>Menu</div> 
             </div>
-            <Link to="/cart" class="header-cart-link">
-              <img src={CartIcon} alt="Cart Icon" />
-              {cartSize && `(${cartSize})`}
-            </Link>
+            <img src={Logo} alt="Logo" />
+            <div 
+              className="header-cart-link" 
+              style={{width: '105px', marginRight: '10px', justifyContent: 'flex-end'}}
+              onClick={() => {
+                setIsMenuOpen(false);
+                setIsBagOpen(!isBagOpen);
+              }}
+            >
+              bag {cartSize ? `(${cartSize})` : '(0)'}
+            </div>
           </nav>
           <div className="page">
             <Switch>
-              <Route path="/cart">
-                <Cart 
-                  key={shopClientTimestamp}
-                  shopClient={shopClient}
-                  checkoutID={checkoutID}
-                  checkoutURL={checkoutURL}
-                  updateShopClient={updateShopClient}
-                />
-              </Route>
               <Route path="/home">
                 <Home />
               </Route>
@@ -100,7 +111,35 @@ export default function App() {
                 />
               </Route>
             </Switch>
+            <footer>
+                <div>
+                  keith lafuente 2021
+                </div>
+                <div>
+                  shipping
+                </div>
+                <div>
+                  contact
+                </div>
+                <div>
+                  faq
+                </div>
+              </footer>
+              
           </div>
+          <div className={`menu ${isMenuOpen ? 'menu-open' : 'menu-closed'}`}>
+                  Menu
+              </div>
+              <div className={`bag ${isBagOpen ? 'bag-open' : 'bag-closed'}`}>
+                <Cart 
+                  key={shopClientTimestamp}
+                  shopClient={shopClient}
+                  checkoutID={checkoutID}
+                  checkoutURL={checkoutURL}
+                  updateShopClient={updateShopClient}
+                  closeBag={() => setIsBagOpen(false)}
+                />
+              </div>
         </div>
       </Router>
   );
