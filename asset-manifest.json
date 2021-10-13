@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/art_and_commerce_site/static/css/main.4e183756.chunk.css",
-    "main.js": "/art_and_commerce_site/static/js/main.ae33e172.chunk.js",
-    "main.js.map": "/art_and_commerce_site/static/js/main.ae33e172.chunk.js.map",
-    "runtime-main.js": "/art_and_commerce_site/static/js/runtime-main.b53d42e5.js",
-    "runtime-main.js.map": "/art_and_commerce_site/static/js/runtime-main.b53d42e5.js.map",
-    "static/js/2.18c0c7d0.chunk.js": "/art_and_commerce_site/static/js/2.18c0c7d0.chunk.js",
-    "static/js/2.18c0c7d0.chunk.js.map": "/art_and_commerce_site/static/js/2.18c0c7d0.chunk.js.map",
-    "static/js/3.0d243750.chunk.js": "/art_and_commerce_site/static/js/3.0d243750.chunk.js",
-    "static/js/3.0d243750.chunk.js.map": "/art_and_commerce_site/static/js/3.0d243750.chunk.js.map",
+    "main.css": "/art_and_commerce_site/static/css/main.9785a3e5.chunk.css",
+    "main.js": "/art_and_commerce_site/static/js/main.b3b3fc1b.chunk.js",
+    "main.js.map": "/art_and_commerce_site/static/js/main.b3b3fc1b.chunk.js.map",
+    "runtime-main.js": "/art_and_commerce_site/static/js/runtime-main.82e53601.js",
+    "runtime-main.js.map": "/art_and_commerce_site/static/js/runtime-main.82e53601.js.map",
+    "static/js/2.235a919a.chunk.js": "/art_and_commerce_site/static/js/2.235a919a.chunk.js",
+    "static/js/2.235a919a.chunk.js.map": "/art_and_commerce_site/static/js/2.235a919a.chunk.js.map",
+    "static/js/3.98b2e9f1.chunk.js": "/art_and_commerce_site/static/js/3.98b2e9f1.chunk.js",
+    "static/js/3.98b2e9f1.chunk.js.map": "/art_and_commerce_site/static/js/3.98b2e9f1.chunk.js.map",
     "index.html": "/art_and_commerce_site/index.html",
-    "static/css/main.4e183756.chunk.css.map": "/art_and_commerce_site/static/css/main.4e183756.chunk.css.map",
-    "static/js/2.18c0c7d0.chunk.js.LICENSE.txt": "/art_and_commerce_site/static/js/2.18c0c7d0.chunk.js.LICENSE.txt",
+    "static/css/main.9785a3e5.chunk.css.map": "/art_and_commerce_site/static/css/main.9785a3e5.chunk.css.map",
+    "static/js/2.235a919a.chunk.js.LICENSE.txt": "/art_and_commerce_site/static/js/2.235a919a.chunk.js.LICENSE.txt",
     "static/media/background_default.b7317ace.png": "/art_and_commerce_site/static/media/background_default.b7317ace.png",
     "static/media/keith_logo.bf38ff83.svg": "/art_and_commerce_site/static/media/keith_logo.bf38ff83.svg",
     "static/media/shell.6e686a57.png": "/art_and_commerce_site/static/media/shell.6e686a57.png",
@@ -19,9 +19,9 @@
     "static/media/shopping_bag_icon.f9917a8d.svg": "/art_and_commerce_site/static/media/shopping_bag_icon.f9917a8d.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.b53d42e5.js",
-    "static/js/2.18c0c7d0.chunk.js",
-    "static/css/main.4e183756.chunk.css",
-    "static/js/main.ae33e172.chunk.js"
+    "static/js/runtime-main.82e53601.js",
+    "static/js/2.235a919a.chunk.js",
+    "static/css/main.9785a3e5.chunk.css",
+    "static/js/main.b3b3fc1b.chunk.js"
   ]
 }
