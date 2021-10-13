@@ -1,27 +1,35 @@
 // React
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-// Components 
+import { Router, useParams } from 'react-router-dom';
+
+// Components
 import Card from './Card';
 
 export default function Shop(props) {
-
-  const {
-    shopClient,
-    checkoutID,
-    updateShopClient
-  } = props;
-
-  const [products, setProducts] = useState([]);
+  const { shopClient, checkoutID, updateShopClient, products, categories } =
+    props;
+  const { id } = useParams();
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {
-    // Fetch all products in your shop
-    shopClient?.product.fetchAll().then((_products) => {
-      console.log(_products);
-      setProducts(_products); 
-    });
-  }, []);
+    if (id !== undefined && categories[id] !== undefined) {
+      setFilteredProducts(categories[id]);
+    } else {
+      setFilteredProducts(products);
+    }
+  }, [id, products, categories]);
+
+  // const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   // Fetch all products in your shop
+  //   shopClient?.product.fetchAll().then((_products) => {
+  //     console.log(_products);
+  //     setProducts(_products);
+  //   });
+  // }, []);
 
   // const addToCart = (productID) => {
   //   const lineItemsToAdd = [{
@@ -36,25 +44,31 @@ export default function Shop(props) {
 
   function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
-}
+  }
 
   return (
     <div className="products-grid">
-      {products.map((product, index) => {
+      {filteredProducts.map((product, index) => {
         return (
-          <React.Fragment>
-            <Card
-              key={index}
-              title={product.title}
-              images={product.images}
-              price={product.variants[0].price}
-              sold={false}
-              rotation={getRandomArbitrary(-0.8, 0.8)}
-            />
-          </React.Fragment>
+          <Link to={`/product/${product.handle}`}>
+            <div
+              className={`product-card`}
+              style={{
+                transform: `rotate(${getRandomArbitrary(-0.8, 0.8)}deg)`,
+              }}
+            >
+              <Card
+                key={index}
+                title={product.title}
+                image={product.images[0]}
+                price={product.variants[0].price}
+                sold={index % 2 === 0}
+              />
+            </div>
+          </Link>
           // { /* Buy now button */ }
-          // {/* <div 
-          //   style={{ cursor: 'pointer', fontWeight: 'bold' }} 
+          // {/* <div
+          //   style={{ cursor: 'pointer', fontWeight: 'bold' }}
           //   onClick={() => { addToCart(product.variants[0].id)}}
           // >
           //   ADD TO CART
