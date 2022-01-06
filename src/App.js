@@ -99,7 +99,7 @@ export default function App() {
     var Airtable = require('airtable');
     Airtable.configure({
       endpointUrl: 'https://api.airtable.com',
-      apiKey: 'keyYFvAEQshdFEo1v',
+      apiKey: 'keyCVfnd8GGLw029l', // a read-only key
     });
     var base = Airtable.base('appUHQ9x9G0OAVdwX');
     base('Variables')
